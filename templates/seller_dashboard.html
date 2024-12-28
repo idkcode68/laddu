@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 80px;
+            max-width: 900px;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #343a40;
+            margin-bottom: 20px;
+        }
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .btn {
+            padding: 14px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: center;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center">
+        <h1>Seller Profile</h1>
+        <p class="text-muted">Manage your listings and create new ones.</p>
+        <div class="btn-container">
+            <a href="{{ url_for('create_listing') }}" class="btn btn-primary">Create Listing</a>
+            <a href="{{ url_for('view_listings') }}" class="btn btn-primary">View Listings</a>
+        </div>
+        <a href="{{ url_for('dashboard') }}" class="btn btn-secondary mt-4">Back to Dashboard</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auction Cart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Auction Cart</h1>
+        {% if cart_items %}
+            <div class="row">
+                {% for item in cart_items %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{{ url_for('static', filename='uploads/' + item.property.image_filename) }}" class="card-img-top" alt="Property Image">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.property.title }}</h5>
+                            <p><strong>Price:</strong> ৳{{ item.property.price }}</p>
+                            <p><strong>Payment Deadline:</strong> 
+                                {{ item.checkout_time_limit.strftime('%Y-%m-%d %H:%M') }}
+                            </p>
+                            <form action="{{ url_for('checkout_cart', cart_id=item.id) }}" method="POST">
+                                <button type="submit" class="btn btn-primary w-100">Pay Now</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="text-center text-muted">Your auction cart is empty.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
